@@ -9,10 +9,14 @@ import {
   Dimensions,
   TextInput,
   Alert,
+  Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+
+import logo from "./assets/logo.jpg";
+
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
 
@@ -28,27 +32,50 @@ const ProvedorTimer = ({ children }) => {
   const [metaPersonalizada, setMetaPersonalizada] = useState(2 * 3600); // 2 horas em segundos
   const [tempoUsuario, setTempoUsuario] = useState(0);
   const [avaliacaoFeita, setAvaliacaoFeita] = useState(false);
-  const [desafios, setDesafios] = useState([
-    { id: 1, nome: "Sem redes sociais por 1h", completado: false, pontos: 50 },
-    { id: 2, nome: "Ler um livro por 30min", completado: false, pontos: 75 },
-    {
-      id: 3,
-      nome: "Fazer 2 atividades offline",
-      completado: false,
-      pontos: 100,
-    },
-    { id: 4, nome: "Meditar por 15min", completado: false, pontos: 60 },
-    { id: 5, nome: "Caminhar sem celular", completado: false, pontos: 80 },
-  ]);
+const [desafios, setDesafios] = useState([
+  { id: 1, nome: "Sem redes sociais por 1h", completado: false, pontos: 50 },
+  { id: 2, nome: "Ler um livro por 30min", completado: false, pontos: 75 },
+  { id: 3, nome: "Fazer 2 atividades offline", completado: false, pontos: 100 },
+  { id: 4, nome: "Meditar por 15min", completado: false, pontos: 60 },
+  { id: 5, nome: "Caminhar sem celular", completado: false, pontos: 80 },
+
+  // Novos desafios
+  { id: 6, nome: "Desconectar por 3 horas seguidas", completado: false, pontos: 200 },
+  { id: 7, nome: "Ler um livro inteiro em 7 dias", completado: false, pontos: 500 },
+  { id: 8, nome: "Um dia inteiro sem redes sociais", completado: false, pontos: 1000 },
+  { id: 9, nome: "Ficar offline por um final de semana", completado: false, pontos: 1500 },
+  { id: 10, nome: "7 dias seguidos sem redes sociais", completado: false, pontos: 2000 },
+  { id: 11, nome: "30 dias de detox digital (uso máximo 1h/dia)", completado: false, pontos: 5000 },
+  { id: 12, nome: "Praticar atividade física diariamente por 15 dias", completado: false, pontos: 1200 },
+  { id: 13, nome: "Jantar todos os dias sem telas por 1 semana", completado: false, pontos: 800 },
+  { id: 14, nome: "Fazer um diário em papel por 10 dias", completado: false, pontos: 900 },
+  { id: 15, nome: "Passar um dia inteiro em natureza, sem eletrônicos", completado: false, pontos: 1800 },
+]);
+
   const [pontos, setPontos] = useState(0);
   const [rotinas, setRotinas] = useState([]);
   const [curiosidades] = useState([
-    "Estudos mostram que reduzir o tempo de tela em 1h por dia pode melhorar a qualidade do sono em 30%",
-    "O uso excessivo de celular está ligado ao aumento da ansiedade e depressão em jovens adultos",
-    "Pessoas que desativam notificações relatam 40% mais produtividade no trabalho",
-    "A luz azul das telas suprime a melatonina, hormônio crucial para o sono",
-    "Intervalos de 5min a cada hora de tela reduzem a fadiga ocular em 60%",
-    "Conversas presenciais ativam áreas do cérebro relacionadas à empatia que as digitais não alcançam",
+    "Reduzir o uso do celular melhora significativamente a memória de curto prazo, segundo estudos em neurociência cognitiva",
+    "Menos tempo em telas está associado a menores níveis de cortisol, o hormônio do estresse, promovendo mais equilíbrio emocional",
+    "Um detox digital ajuda a restaurar a capacidade de atenção sustentada, frequentemente prejudicada por interrupções constantes",
+    "O tédio induzido pela ausência do celular estimula a criatividade, permitindo conexões mentais mais livres e originais",
+    "A redução no tempo de tela contribui para romper padrões de uso compulsivo semelhantes aos de vícios comportamentais",
+    "A ausência de celulares em interações sociais fortalece vínculos e melhora a empatia entre as pessoas",
+    "Desconectar-se libera tempo para atividades prazerosas e significativas, promovendo maior satisfação com a vida",
+    "Menos uso de celular está relacionado à diminuição de dores cervicais causadas por má postura prolongada",
+    "Reduzir o uso de celular em ambientes de risco diminui a probabilidade de acidentes por distração",
+    "Evitar telas à noite favorece o ritmo circadiano natural, melhorando a qualidade e duração do sono",
+    "O detox digital reduz a exposição a conteúdos negativos ou desinformativos que afetam o bem-estar mental",
+    "Menos tempo em redes sociais permite o desenvolvimento de autocontrole e disciplina, importantes para a saúde mental",
+    "Estudantes que reduzem o uso do celular têm melhor desempenho acadêmico por aumentarem sua capacidade de foco",
+    "A diminuição da tela reduz a procrastinação associada a estímulos digitais e aumenta a execução de tarefas importantes",
+    "Ficar longe do celular ajuda a reequilibrar o sistema de dopamina, diminuindo a busca por recompensas instantâneas",
+    "A redução do tempo de tela facilita a prática de mindfulness, promovendo maior conexão com o momento presente",
+    "Menos exposição digital reduz a irritabilidade e aumenta a tolerância à frustração, segundo estudos em psicologia comportamental",
+    "Evitar distrações do celular durante atividades físicas melhora o rendimento e a consistência nos treinos",
+    "Ficar desconectado favorece o desenvolvimento da inteligência emocional ao permitir contato mais consciente com as emoções",
+    "O detox digital estimula hábitos saudáveis de sono, alimentação e autocuidado, ao liberar tempo e foco para essas práticas",
+
   ]);
 
   useEffect(() => {
@@ -108,6 +135,11 @@ const ProvedorTimer = ({ children }) => {
     setPontos(pontos + 25); // Pontos por completar rotina
   };
 
+  const excluirRotina = (id) => {
+    setRotinas(rotinas.filter((rotina) => rotina.id !== id));
+  };
+
+
   return (
     <TimerContext.Provider
       value={{
@@ -124,6 +156,7 @@ const ProvedorTimer = ({ children }) => {
         rotinas,
         adicionarRotina,
         completarRotina,
+        excluirRotina,
         curiosidades,
       }}
     >
@@ -236,7 +269,7 @@ function TelaInicial({ navigation }) {
   const dicasDiarias = [
     "Comece reduzindo 15min por dia do tempo de tela",
     "Estabeleça zonas livres de celular em casa",
-    "Use o modo avião durante refeições",
+    "Use o modo avião e/ou desative notificações durante refeições",
     "Programe horários específicos para checar redes sociais",
   ];
   const [dicaDiaria] = useState(
@@ -245,7 +278,7 @@ function TelaInicial({ navigation }) {
 
   return (
     <View style={estilosGlobais.container}>
-      <Cabecalho titulo="Digital Detox" />
+      <Cabecalho titulo="Equilibrium" />
       <ScrollView
         style={{ flex: 1 }}
         contentContainerStyle={[
@@ -264,7 +297,7 @@ function TelaInicial({ navigation }) {
 
         <View style={estilos.containerHeroi}>
           <View style={estilos.iconeHeroi}>
-            <Ionicons name="phone-portrait" size={80} color={cores.branco} />
+            <Image source={logo} style={{ width: "100%", height: "100%", borderRadius: 50}} />
           </View>
           <Text style={estilos.tituloHeroi}>Controle seu Tempo de Tela</Text>
           <Text style={estilos.subtituloHeroi}>
@@ -442,6 +475,12 @@ function TelaResultadoAvaliacao({ route, navigation }) {
     "Deixe o carregador fora do quarto à noite",
     "Substitua 30min de tela por leitura ou exercício",
     "Desative notificações de apps não essenciais",
+    "Tente achar um hobby fora das telas",
+    "Use apps que monitoram e limitam o tempo de uso",
+    "Faça pausas regulares longe das telas",
+    "Evite usar o celular durante as refeições",
+    "Pratique meditação ou mindfulness diariamente",
+    "Estabeleça um horário para dormir e acordar",
   ];
 
   return (
@@ -501,7 +540,7 @@ function TelaResultadoAvaliacao({ route, navigation }) {
 }
 
 function TelaRotinas({ navigation }) {
-  const { rotinas, adicionarRotina, completarRotina } = useTimer();
+  const { rotinas, adicionarRotina, completarRotina, excluirRotina } = useTimer();
   const [novaRotina, setNovaRotina] = useState("");
   const [categoria, setCategoria] = useState("manha");
 
@@ -563,7 +602,7 @@ function TelaRotinas({ navigation }) {
                   style={[
                     estilos.textoBotaoCategoria,
                     categoria === cat.id &&
-                      estilos.textoBotaoCategoriaSelecionado,
+                    estilos.textoBotaoCategoriaSelecionado,
                   ]}
                 >
                   {cat.nome}
@@ -634,6 +673,23 @@ function TelaRotinas({ navigation }) {
                           CONCLUÍDA
                         </Text>
                       </View>
+
+                    )}
+
+                    {rotina.completada && (
+                      <View style={estilos.botaoExcluirRotina}>
+                        <TouchableOpacity
+                          onPress={() => excluirRotina(rotina.id)}
+                        >
+                          <Ionicons
+                            name="trash"
+                            size={20}
+                            color={cores.branco}
+                          />
+                        </TouchableOpacity>
+
+                      </View>
+
                     )}
                   </Cartao>
                 ))}
@@ -778,20 +834,34 @@ function TelaGamificacao({ navigation }) {
           {[
             {
               pontos: 100,
-              recompensa: "Pacote de wallpapers exclusivos",
-              icone: "images",
+              recompensa: "Bronze",
+              icone: "medal",
             },
             {
               pontos: 250,
-              recompensa: "Desconto em app de meditação",
-              icone: "medkit",
+              recompensa: "Prata",
+              icone: "ribbon",
             },
             {
               pontos: 500,
-              recompensa: "E-book grátis à sua escolha",
-              icone: "book",
+              recompensa: "Ouro",
+              icone: "star",
             },
-          ].map((item, index) => (
+            {
+              pontos: 1000,
+              recompensa: "Platina",
+              icone: "rocket",
+            },
+            {
+              pontos: 2000,
+              recompensa: "Diamante",
+              icone: "diamond",
+            }
+
+
+
+            
+            ].map((item, index) => (
             <View
               key={index}
               style={[
@@ -965,6 +1035,7 @@ const estilos = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 16,
     alignItems: "center",
+    marginTop: 10,
   },
   textoAviso: {
     color: cores.preto,
@@ -986,6 +1057,7 @@ const estilos = StyleSheet.create({
     alignItems: "center",
     marginBottom: 20,
     ...estilosGlobais.sombra,
+    padding: 10,
   },
   tituloHeroi: {
     fontSize: 28,
@@ -1559,6 +1631,18 @@ const estilos = StyleSheet.create({
     color: cores.sucesso,
     fontWeight: "600",
   },
+  botaoExcluirRotina: {
+    backgroundColor: cores.perigo,
+    width: "fit-content",
+    padding: 8,
+    borderRadius: 8,
+
+    position: "absolute",
+    top: "50%",
+    right: "0%",
+    transform: [{ translateX: "-50%" }, { translateY: "-50%" }],
+    cursor: "pointer",
+  }
 });
 
 export default function App() {
