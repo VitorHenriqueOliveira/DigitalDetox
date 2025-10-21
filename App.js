@@ -838,22 +838,22 @@ function TelaGamificacao({ navigation }) {
               icone: "medal",
             },
             {
-              pontos: 250,
+              pontos: 2500,
               recompensa: "Prata",
               icone: "ribbon",
             },
             {
-              pontos: 500,
+              pontos: 5000,
               recompensa: "Ouro",
               icone: "star",
             },
             {
-              pontos: 1000,
+              pontos: 10000,
               recompensa: "Platina",
               icone: "rocket",
             },
             {
-              pontos: 2000,
+              pontos: 15000,
               recompensa: "Diamante",
               icone: "diamond",
             }

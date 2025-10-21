@@ -1,23 +1,22 @@
 {
   "expo": {
-    "name": "DigitalDetox",
+    "name": "Equilibrium",
     "slug": "DigitalDetox",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
+    "experiments": {
+      "turboModules": false
+    },
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.vitorhenriquereisoliveira.DigitalDetox",
-      "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
-      }
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
@@ -25,14 +24,14 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.vitorhenriquereisoliveira.DigitalDetox"
+      "package": "com.vitoncio.DigitalDetox"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "c392ddda-2146-4317-a886-16169af88aff"
+        "projectId": "f51b09ce-48b3-4579-8cb6-c9191233e0b0"
       }
     },
     "plugins": [
